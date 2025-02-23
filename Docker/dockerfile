@@ -1,0 +1,18 @@
+# base environment for Golang image
+from golang:latest
+
+# create a new folder inside container
+WORKDIR /appport
+
+# copy files from local folder into new fodler inside container appport
+copy . .
+
+# creat module that need it my code 
+run go mod init Ascii-Art-Web
+
+# docker build my go app and name of the output file
+run go build -o Asciiart .
+# run my app
+cmd ["./Asciiart"]
+
+
